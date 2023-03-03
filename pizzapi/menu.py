@@ -62,11 +62,10 @@ class Menu(object):
             new_subcategory = self.build_categories(subcategory, category)
             category.subcategories.append(new_subcategory)
         for product_code in category_data['Products']:
-            if product_code not in self.menu_by_code:
-                pass
-            product = self.menu_by_code[product_code]
-            category.products.append(product)
-            product.categories.append(category)
+            if product_code in self.menu_by_code:
+                product = self.menu_by_code[product_code]
+                category.products.append(product)
+                product.categories.append(category)
         return category
 
     def parse_items(self, parent_data):
