@@ -54,6 +54,11 @@ class Menu(object):
         response = request_json(Urls(country).menu_url(), store_id=store_id, lang=lang)
         menu = cls(response)
         return menu
+    
+    @classmethod
+    def from_store_raw(cls, store_id, lang='en', country=COUNTRY_USA):
+        response = request_json(Urls(country).menu_url(), store_id=store_id, lang=lang)
+        return response
 
     # TODO: Reconfigure structure to show that Codes (not ProductCodes) matter
     def build_categories(self, category_data, parent=None):
